@@ -1,0 +1,104 @@
+<div class="form-container">
+  <div class="form-header">
+    <button mat-icon-button routerLink="/employees" aria-label="Go back">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h2>Add New Employee</h2>
+  </div>
+
+  <mat-card class="form-card mat-elevation-z4">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Personal Information -->
+      <div class="form-section">
+        <h3>Personal Information</h3>
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="first_name" placeholder="John">
+            <mat-error *ngIf="employeeForm.get('first_name')?.hasError('required')">First name is required</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="last_name" placeholder="Doe">
+            <mat-error *ngIf="employeeForm.get('last_name')?.hasError('required')">Last name is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="john.doe@example.com">
+            <mat-error *ngIf="employeeForm.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="employeeForm.get('email')?.hasError('email')">Invalid email format</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Other">Other</mat-option>
+            </mat-select>
+            <mat-error *ngIf="employeeForm.get('gender')?.hasError('required')">Gender is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Professional Information -->
+      <div class="form-section">
+        <h3>Professional Information</h3>
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Department</mat-label>
+            <input matInput formControlName="department" placeholder="e.g. Engineering">
+            <mat-error *ngIf="employeeForm.get('department')?.hasError('required')">Department is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Position / Designation</mat-label>
+            <input matInput formControlName="designation" placeholder="e.g. Software Engineer">
+            <mat-error *ngIf="employeeForm.get('designation')?.hasError('required')">Position is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Salary</mat-label>
+            <span matTextPrefix>$&nbsp;</span>
+            <input matInput formControlName="salary" type="number" placeholder="60000">
+            <mat-error *ngIf="employeeForm.get('salary')?.hasError('required')">Salary is required</mat-error>
+            <mat-error *ngIf="employeeForm.get('salary')?.hasError('min')">Salary must be positive</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Date of Joining</mat-label>
+            <input matInput type="date" formControlName="date_of_joining">
+            <mat-error *ngIf="employeeForm.get('date_of_joining')?.hasError('required')">Date is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Additional Details -->
+      <div class="form-section">
+        <h3>Additional Details</h3>
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field photo-field">
+            <mat-label>Profile Photo URL</mat-label>
+            <input matInput formControlName="employee_photo" placeholder="https://example.com/photo.jpg">
+            <mat-icon matSuffix>link</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button mat-button type="button" routerLink="/employees">Cancel</button>
+        <button mat-flat-button color="primary" type="submit" [disabled]="employeeForm.invalid || isSubmitting">
+          <mat-icon>save</mat-icon> Save Employee
+        </button>
+      </div>
+
+    </form>
+  </mat-card>
+</div>

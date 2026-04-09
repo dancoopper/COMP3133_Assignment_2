@@ -1,0 +1,138 @@
+.list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 0;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  h2 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e3c72;
+  }
+}
+
+.search-card {
+  margin-bottom: 24px;
+  border-radius: 12px;
+  padding: 16px 24px;
+}
+
+.search-form {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+
+  mat-form-field {
+    flex: 1 1 200px;
+    margin-bottom: -1.25em; /* remove padding from mat-form-field */
+  }
+
+  .search-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: -1.25em;
+
+    button {
+      height: 56px;
+    }
+  }
+}
+
+.table-card {
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.employee-row {
+  transition: background-color 0.2s ease;
+  &:hover {
+    background-color: #f8f9fa;
+  }
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff4081 0%, #c2185b 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.avatar-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-primary {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.empty-cell {
+  text-align: center;
+  padding: 48px;
+  font-style: italic;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .header-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .search-form {
+    flex-direction: column;
+    align-items: stretch;
+
+    mat-form-field {
+      margin-bottom: 0px;
+    }
+
+    .search-buttons {
+      margin-bottom: 0px;
+      margin-top: 16px;
+    }
+  }
+}
