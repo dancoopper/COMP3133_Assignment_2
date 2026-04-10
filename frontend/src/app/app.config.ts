@@ -11,7 +11,7 @@ import { authInterceptor } from './interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes), 
+    provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([authInterceptor])),
     {
@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
         return {
           cache: new InMemoryCache(),
           link: httpLink.create({
-            uri: 'http://localhost:4000/graphql',
+            uri: 'https://comp3133-assignment-2.onrender.com',
           }),
         };
       },
