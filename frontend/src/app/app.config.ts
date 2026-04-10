@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
         return {
           cache: new InMemoryCache(),
           link: httpLink.create({
-            uri: 'https://comp3133-assignment-2.onrender.com',
+            uri: 'https://comp3133-assignment-2.onrender.com/graphql',
           }),
         };
       },
